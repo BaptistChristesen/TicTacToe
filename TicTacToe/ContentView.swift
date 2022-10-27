@@ -43,7 +43,12 @@ struct ContentView: View {
         }
         .preferredColorScheme(.dark)
         .alert(isPresented: $gameOver){
-            Alert(title: Text(winMessage))
+            Alert(title: Text(winMessage), dismissButton: .destructive(Text("Play Again"), action:{
+                withAnimation{
+                    moves = Array(repeating: "", count: 9)
+                    gameOver = false
+                }
+            }))
         }
         .onChange(of: moves) { newValue in
             checkForWinner()
@@ -65,11 +70,15 @@ struct ContentView: View {
         checkLine(a: 2, b: 5, c: 8) //right column
         checkLine(a: 0, b: 4, c: 8) //left-right diagonal
         checkLine(a: 2, b: 4, c: 6) //right-left
+        if !(gameOver || moves.contains("")){
+            winMessage = "Cat's Game"
+            gameOver = true
+        }
         
     }
     private func checkLine(a: Int, b: Int, c: Int){
-        if moves[0] != "" && moves[0] == moves[1] && moves[1] == moves[2]{
-            winMessage = "\(moves [0]) is the winner!"
+        if moves[a] != "" && moves[a] == moves[b] && moves[b] == moves[c]{
+            winMessage = "\(moves [a]) is the winner!"
             gameOver = true
         }
     }
