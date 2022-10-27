@@ -35,6 +35,7 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .rotation3DEffect(.init(degrees: moves[index] != "" ? 180 : 0), axis: (x: 0.0, y: 1.0, z: 10.0))
                 }
             }
         }
