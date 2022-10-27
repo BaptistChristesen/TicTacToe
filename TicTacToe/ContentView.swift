@@ -45,7 +45,7 @@ struct ContentView: View {
         .alert(isPresented: $gameOver){
             Alert(title: Text(winMessage))
          }
-         .onChange(of: moves) {
+         .onChange(of: moves) { newValue in
              checkForWinner()
         }
         
