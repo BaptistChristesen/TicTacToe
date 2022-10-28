@@ -20,7 +20,7 @@ struct ContentView: View {
             LazyVGrid(columns: Array(repeating: GridItem(.fixed(120), spacing: 15), count: 3), spacing: 15){
                 ForEach(0..<9){ index in
                     ZStack{
-                        Color.blue
+                        Color.orange
                         Text(moves[index])
                             .font(.system(size: 90))
                             .fontWeight(.heavy)
