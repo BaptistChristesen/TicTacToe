@@ -56,11 +56,6 @@ struct ContentView: View {
         
     }
     
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
-    }
     private func checkForWinner(){
         checkLine(a: 0, b: 1, c: 2) //top row
         checkLine(a: 3, b: 4, c: 5) //mid row
@@ -76,10 +71,17 @@ struct ContentView: View {
         }
         
     }
+    
     private func checkLine(a: Int, b: Int, c: Int){
         if moves[a] != "" && moves[a] == moves[b] && moves[b] == moves[c]{
             winMessage = "\(moves [a]) is the winner!"
             gameOver = true
         }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }
